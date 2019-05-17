@@ -1,34 +1,4 @@
-class Carousel {
-    constructor(carouselElememt){
-        this.carouselElememt = carouselElememt;
-        this.currentPic = 0;
-        this.imgs = this.carouselElememt.querySelectorAll('img');
-        this.maxPic = this.imgs.length;
 
-        this.carouselElememt.querySelector('.left-button').addEventListener('click', () => this.leftClicked());
-        this.carouselElememt.querySelector('.right-button').addEventListener('click', () => this.rightClicked());
-    }
-
-     rightClicked() {
-        let newNum = this.currentPic + 1;
-        if (newNum == this.maxPic )
-            newNum = 0;
-
-        this.imgs[this.currentPic].classList = 'slideRightOut';
-        this.imgs[newNum].classList = 'slideRightIn';
-        this.currentPic = newNum;
-      }
-
-    leftClicked(){
-        let newNum = this.currentPic - 1;
-        if (newNum == -1 )
-            newNum = this.maxPic - 1;
-        this.imgs[this.currentPic].classList = 'slideLeftOut';
-        this.imgs[newNum].classList = 'slideLeftIn';
-        this.currentPic = newNum;
-
-      }
-}
 
 let carousel = document.querySelector('.carousel');
 carousel = new Carousel(carousel);
