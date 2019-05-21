@@ -1,15 +1,18 @@
 class Carousel {
     constructor(carouselElement){
         this.carouselElement = carouselElement;
-        this.currentPic = 0;
         this.imgs = this.carouselElement.querySelectorAll('img');
+        this.rightButton = this.carouselElement.querySelector('.left-button');
+        this.leftButton = this.carouselElement.querySelector('.right-button');
+        this.currentPic = 0;
         this.maxPic = this.imgs.length;
 
-        this.carouselElement.querySelector('.left-button').addEventListener('click', () => this.leftClicked());
-        this.carouselElement.querySelector('.right-button').addEventListener('click', () => this.rightClicked());
+
+        this.leftButton.addEventListener('click', () => this.leftClicked);
+        this.rightButton.addEventListener('click', () => this.rightClicked);
     }
 
-     rightClicked() {
+     rightClicked = () => {
         let newNum = this.currentPic + 1;
         if (newNum == this.maxPic )
             newNum = 0;
@@ -19,14 +22,13 @@ class Carousel {
         this.currentPic = newNum;
       }
 
-    leftClicked(){
+    leftClicked = () => {
         let newNum = this.currentPic - 1;
         if (newNum == -1 )
             newNum = this.maxPic - 1;
         this.imgs[this.currentPic].classList = 'slideLeftOut';
         this.imgs[newNum].classList = 'slideLeftIn';
         this.currentPic = newNum;
-
       }
 }
 
